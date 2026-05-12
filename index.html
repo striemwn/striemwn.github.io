@@ -14,59 +14,86 @@
   --accent:#60a5fa;
 }
 
+*{box-sizing:border-box}
+
 body{
   margin:0;
-  font-family: Arial, sans-serif;
+  font-family:Arial, sans-serif;
   background:var(--bg);
   color:var(--text);
 }
 
 /* NAV */
 nav{
+  position:sticky;
+  top:0;
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:18px 30px;
   border-bottom:1px solid #222;
-  position:sticky;
-  top:0;
   background:rgba(11,11,12,0.85);
-  backdrop-filter: blur(10px);
+  backdrop-filter:blur(10px);
 }
 
 nav h1{
-  font-size:16px;
-  letter-spacing:3px;
+  letter-spacing:4px;
+  font-size:14px;
 }
 
-.lang button{
-  background:none;
-  border:none;
+nav a{
   color:var(--muted);
-  margin-left:10px;
-  cursor:pointer;
+  margin-left:15px;
+  text-decoration:none;
 }
-
-.lang button:hover{
-  color:white;
-}
+nav a:hover{color:white}
 
 /* HERO */
 .hero{
   text-align:center;
-  padding:90px 20px;
+  padding:110px 20px 80px;
+}
+
+.hero .small{
+  color:var(--accent);
+  letter-spacing:4px;
+  font-size:12px;
+  margin-bottom:20px;
 }
 
 .hero h2{
-  font-size:44px;
-  margin-bottom:15px;
+  font-size:52px;
+  margin:0;
+  line-height:1.1;
 }
 
 .hero p{
+  max-width:650px;
+  margin:25px auto;
   color:var(--muted);
-  max-width:600px;
-  margin:0 auto;
-  line-height:1.5;
+  line-height:1.6;
+}
+
+.buttons{
+  margin-top:25px;
+}
+
+.btn{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:12px;
+  margin:5px;
+  text-decoration:none;
+}
+
+.btn.primary{
+  background:white;
+  color:black;
+}
+
+.btn.secondary{
+  border:1px solid #333;
+  color:white;
 }
 
 /* GRID */
@@ -87,12 +114,10 @@ nav h1{
 }
 
 .card:hover{
-  transform:translateY(-5px);
+  transform:translateY(-6px);
 }
 
-.card h3{
-  margin-top:0;
-}
+.card h3{margin-top:0}
 
 /* GALLERY */
 .gallery{
@@ -112,7 +137,6 @@ nav h1{
   align-items:center;
   justify-content:center;
   color:#555;
-  font-size:12px;
 }
 
 /* FOOTER */
@@ -122,9 +146,7 @@ footer{
   color:var(--muted);
   border-top:1px solid #222;
 }
-
-/* LINKS */
-a{ color:var(--accent); text-decoration:none; }
+a{color:var(--accent)}
 </style>
 </head>
 
@@ -132,108 +154,68 @@ a{ color:var(--accent); text-decoration:none; }
 
 <nav>
   <h1>STRIEMWN</h1>
-
-  <div class="lang">
-    <button onclick="setLang('en')">EN</button>
-    <button onclick="setLang('de')">DE</button>
-    <button onclick="setLang('ru')">RU</button>
-    <button onclick="setLang('ua')">UA</button>
-    <button onclick="setLang('pl')">PL</button>
+  <div>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <section class="hero">
-  <h2 id="title">Urban Rails. Motion. Night.</h2>
-  <p id="desc">Transport spotter from Dresden. Photographer. Game developer.</p>
+  <div class="small">TRAM SPOTTER • PHOTOGRAPHER • DEV</div>
+
+  <h2>Urban Rails.<br>Night Lights.<br>Motion.</h2>
+
+  <p>
+    Personal website of Striemwn. Photos, routes, tram models, city atmosphere
+    and documentation of urban transport in Dresden.
+  </p>
+
+  <div class="buttons">
+    <a class="btn primary" href="#gallery">Explore Gallery</a>
+    <a class="btn secondary" href="#about">About Me</a>
+  </div>
 </section>
 
-<section class="grid">
+<section id="about" class="grid">
 
   <div class="card">
     <h3>About</h3>
-    <p id="about">Public Transport Spotter from Dresden (Germany).</p>
+    <p>Public Transport Spotter from Dresden (Germany).</p>
   </div>
 
   <div class="card">
     <h3>Game Dev</h3>
-    <p id="game">
-      Working on Wildsdener Verkehrsbetriebe — a transport simulation game in Unity.
+    <p>
+      Working on <b>Wildsdener Verkehrsbetriebe</b> — a transport simulation game in Unity.
     </p>
     <p style="font-size:12px;color:#666;">
       Wildsdener Verkehrsbetriebe
     </p>
   </div>
 
-  <div class="card">
+  <div class="card" id="contact">
     <h3>Contact</h3>
     <p>
-      Telegram: <a href="https://t.me/striemwngl">@striemwngl</a><br/>
+      Telegram: <a href="https://t.me/striemwngl">@striemwngl</a><br>
       Discord: soon
     </p>
   </div>
 
 </section>
 
-<section class="gallery">
+<section id="gallery" class="gallery">
+
   <div class="photo">photo 1</div>
   <div class="photo">photo 2</div>
   <div class="photo">photo 3</div>
   <div class="photo">photo 4</div>
+
 </section>
 
 <footer>
   © 2026 STRIEMWN
 </footer>
-
-<script>
-const t = {
-  en:{
-    title:"Urban Rails. Motion. Night.",
-    desc:"Transport spotter from Dresden. Photographer. Game developer.",
-    about:"Public Transport Spotter from Dresden (Germany).",
-    game:"Working on Wildsdener Verkehrsbetriebe — a transport simulation game in Unity."
-  },
-  de:{
-    title:"Städtische Schienen. Bewegung. Nacht.",
-    desc:"Straßenbahn Spotter aus Dresden. Fotograf. Spieleentwickler.",
-    about:"ÖPNV Spotter aus Dresden (Deutschland).",
-    game:"Arbeitet an Wildsdener Verkehrsbetriebe — einer Simulation in Unity."
-  },
-  ru:{
-    title:"Городские рельсы. Движение. Ночь.",
-    desc:"Трамвайный споттер из Дрездена. Фотограф и разработчик игр.",
-    about:"Споттер общественного транспорта из Дрездена (Германия).",
-    game:"Разрабатывает Wildsdener Verkehrsbetriebe — транспортный симулятор на Unity."
-  },
-  ua:{
-    title:"Міські рейки. Рух. Ніч.",
-    desc:"Споттер трамваїв із Дрездена. Фотограф і розробник ігор.",
-    about:"Споттер громадського транспорту з Дрездена (Німеччина).",
-    game:"Розробляє Wildsdener Verkehrsbetriebe — транспортний симулятор на Unity."
-  },
-  pl:{
-    title:"Miejskie szyny. Ruch. Noc.",
-    desc:"Spotter tramwajów z Drezna. Fotograf i twórca gier.",
-    about:"Spotter transportu publicznego z Drezna (Niemcy).",
-    game:"Tworzy Wildsdener Verkehrsbetriebe — symulator transportu w Unity."
-  }
-};
-
-function setLang(l){
-  localStorage.setItem("lang",l);
-  apply();
-}
-
-function apply(){
-  let l = localStorage.getItem("lang") || "en";
-  document.getElementById("title").innerText = t[l].title;
-  document.getElementById("desc").innerText = t[l].desc;
-  document.getElementById("about").innerText = t[l].about;
-  document.getElementById("game").innerText = t[l].game;
-}
-
-apply();
-</script>
 
 </body>
 </html>
