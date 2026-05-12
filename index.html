@@ -1,106 +1,239 @@
-export default function StriemwnSite() { return ( <main className="min-h-screen bg-black text-white overflow-hidden"> {/* Background glow */} <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,120,255,0.25),transparent_40%)]" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>STRIEMWN</title>
 
-{/* Navigation */}
-  <nav className="relative z-10 flex items-center justify-between px-8 py-6 border-b border-white/10 backdrop-blur-sm">
-    <h1 className="text-2xl font-bold tracking-widest">STRIEMWN</h1>
+<style>
+:root{
+  --bg:#0b0b0c;
+  --card:#141416;
+  --text:#f1f1f1;
+  --muted:#9ca3af;
+  --accent:#60a5fa;
+}
 
-    <div className="flex gap-6 text-sm text-white/70">
-      <a href="#gallery" className="hover:text-white transition">Gallery</a>
-      <a href="#about" className="hover:text-white transition">About</a>
-      <a href="#contact" className="hover:text-white transition">Contact</a>
-    </div>
-  </nav>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
 
-  {/* Hero section */}
-  <section className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-32">
-    <p className="uppercase tracking-[0.4em] text-blue-400 text-sm mb-4">
-      Tram Spotter • Photographer • Rail Enthusiast
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 30px;
+  border-bottom:1px solid #222;
+  position:sticky;
+  top:0;
+  background:rgba(11,11,12,0.85);
+  backdrop-filter: blur(10px);
+}
+
+nav h1{
+  font-size:16px;
+  letter-spacing:3px;
+}
+
+.lang button{
+  background:none;
+  border:none;
+  color:var(--muted);
+  margin-left:10px;
+  cursor:pointer;
+}
+
+.lang button:hover{
+  color:white;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:90px 20px;
+}
+
+.hero h2{
+  font-size:44px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  color:var(--muted);
+  max-width:600px;
+  margin:0 auto;
+  line-height:1.5;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:16px;
+  padding:40px;
+  max-width:1000px;
+  margin:auto;
+}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:16px;
+  transition:0.25s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card h3{
+  margin-top:0;
+}
+
+/* GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:10px;
+  padding:40px;
+  max-width:1000px;
+  margin:auto;
+}
+
+.photo{
+  aspect-ratio:1/1;
+  background:#1a1a1a;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#555;
+  font-size:12px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:40px;
+  color:var(--muted);
+  border-top:1px solid #222;
+}
+
+/* LINKS */
+a{ color:var(--accent); text-decoration:none; }
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h1>STRIEMWN</h1>
+
+  <div class="lang">
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('de')">DE</button>
+    <button onclick="setLang('ru')">RU</button>
+    <button onclick="setLang('ua')">UA</button>
+    <button onclick="setLang('pl')">PL</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <h2 id="title">Urban Rails. Motion. Night.</h2>
+  <p id="desc">Transport spotter from Dresden. Photographer. Game developer.</p>
+</section>
+
+<section class="grid">
+
+  <div class="card">
+    <h3>About</h3>
+    <p id="about">Public Transport Spotter from Dresden (Germany).</p>
+  </div>
+
+  <div class="card">
+    <h3>Game Dev</h3>
+    <p id="game">
+      Working on Wildsdener Verkehrsbetriebe — a transport simulation game in Unity.
     </p>
-
-    <h2 className="text-6xl md:text-8xl font-black leading-none max-w-5xl">
-      Urban Rails.
-      <br />
-      Night Lights.
-      <br />
-      Motion.
-    </h2>
-
-    <p className="mt-8 text-white/70 max-w-2xl text-lg leading-relaxed">
-      Personal website of Striemwn. Photos, routes, tram models,
-      city atmosphere and random documentation of humanity moving
-      through steel boxes on rails. Civilization somehow survived
-      long enough for this to become an art form.
-    </p>
-
-    <div className="mt-10 flex gap-4">
-      <a
-        href="#gallery"
-        className="bg-white text-black px-6 py-3 rounded-2xl font-semibold hover:scale-105 transition"
-      >
-        Explore Gallery
-      </a>
-
-      <a
-        href="#about"
-        className="border border-white/20 px-6 py-3 rounded-2xl hover:bg-white/10 transition"
-      >
-        About Me
-      </a>
-    </div>
-  </section>
-
-  {/* Gallery */}
-
-  <section id="gallery" className="relative z-10 px-8 py-20">
-    <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6"><div className="bg-white/5 border border-white/10 rounded-3xl p-6 hover:-translate-y-1 transition">
-    <h3 className="text-xl font-bold mb-2">About</h3>
-    <p className="text-white/70">
-      Public Transport Spotter from Dresden (Germany).
+    <p style="font-size:12px;color:#666;">
+      Wildsdener Verkehrsbetriebe
     </p>
   </div>
 
-  <div className="bg-white/5 border border-white/10 rounded-3xl p-6 hover:-translate-y-1 transition">
-    <h3 className="text-xl font-bold mb-2">Game Dev</h3>
-    <p className="text-white/70">
-      Working on <b>Wildsdener Verkehrsbetriebe</b> — a transport simulation game in Unity.
-    </p>
-  </div>
-
-  <div className="bg-white/5 border border-white/10 rounded-3xl p-6 hover:-translate-y-1 transition">
-    <h3 className="text-xl font-bold mb-2">Contact</h3>
-    <p className="text-white/70">
-      Telegram: <a className="text-blue-400" href="https://t.me/striemwngl">@striemwngl</a><br/>
+  <div class="card">
+    <h3>Contact</h3>
+    <p>
+      Telegram: <a href="https://t.me/striemwngl">@striemwngl</a><br/>
       Discord: soon
     </p>
   </div>
 
-</div>
+</section>
 
-  </section>{/* About */} <section id="about" className="relative z-10 px-8 py-24 border-t border-white/10"> <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center"> <div> <p className="text-blue-400 uppercase tracking-[0.3em] text-sm mb-2"> About </p>
+<section class="gallery">
+  <div class="photo">photo 1</div>
+  <div class="photo">photo 2</div>
+  <div class="photo">photo 3</div>
+  <div class="photo">photo 4</div>
+</section>
 
-<h3 className="text-5xl font-black mb-6">
-          Just a person obsessed with transit systems.
-        </h3>
-      </div>
+<footer>
+  © 2026 STRIEMWN
+</footer>
 
-      <div>
-        <p className="text-white/70 leading-relaxed text-lg">
-          This website is a collection of photographs, observations,
-          route histories and city moments centered around trams and
-          urban transport. Somewhere between engineering, atmosphere
-          and sleep deprivation.
-        </p>
-      </div>
-    </div>
-  </section>
+<script>
+const t = {
+  en:{
+    title:"Urban Rails. Motion. Night.",
+    desc:"Transport spotter from Dresden. Photographer. Game developer.",
+    about:"Public Transport Spotter from Dresden (Germany).",
+    game:"Working on Wildsdener Verkehrsbetriebe — a transport simulation game in Unity."
+  },
+  de:{
+    title:"Städtische Schienen. Bewegung. Nacht.",
+    desc:"Straßenbahn Spotter aus Dresden. Fotograf. Spieleentwickler.",
+    about:"ÖPNV Spotter aus Dresden (Deutschland).",
+    game:"Arbeitet an Wildsdener Verkehrsbetriebe — einer Simulation in Unity."
+  },
+  ru:{
+    title:"Городские рельсы. Движение. Ночь.",
+    desc:"Трамвайный споттер из Дрездена. Фотограф и разработчик игр.",
+    about:"Споттер общественного транспорта из Дрездена (Германия).",
+    game:"Разрабатывает Wildsdener Verkehrsbetriebe — транспортный симулятор на Unity."
+  },
+  ua:{
+    title:"Міські рейки. Рух. Ніч.",
+    desc:"Споттер трамваїв із Дрездена. Фотограф і розробник ігор.",
+    about:"Споттер громадського транспорту з Дрездена (Німеччина).",
+    game:"Розробляє Wildsdener Verkehrsbetriebe — транспортний симулятор на Unity."
+  },
+  pl:{
+    title:"Miejskie szyny. Ruch. Noc.",
+    desc:"Spotter tramwajów z Drezna. Fotograf i twórca gier.",
+    about:"Spotter transportu publicznego z Drezna (Niemcy).",
+    game:"Tworzy Wildsdener Verkehrsbetriebe — symulator transportu w Unity."
+  }
+};
 
-  {/* Footer */}
-  <footer
-    id="contact"
-    className="relative z-10 border-t border-white/10 px-8 py-10 text-center text-white/40"
-  >
-    <p>© 2026 STRIEMWN.COM</p>
-  </footer>
-</main>
+function setLang(l){
+  localStorage.setItem("lang",l);
+  apply();
+}
 
-); }
+function apply(){
+  let l = localStorage.getItem("lang") || "en";
+  document.getElementById("title").innerText = t[l].title;
+  document.getElementById("desc").innerText = t[l].desc;
+  document.getElementById("about").innerText = t[l].about;
+  document.getElementById("game").innerText = t[l].game;
+}
+
+apply();
+</script>
+
+</body>
+</html>
