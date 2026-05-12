@@ -1,53 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Striemwn</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0b0c;
-      color: #f1f1f1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STRIEMWN</title>
 
-    .card {
-      max-width: 600px;
-      padding: 20px;
-    }
+<style>
+:root{
+  --bg:#0b0b0c;
+  --card:#141416;
+  --text:#f1f1f1;
+  --muted:#9ca3af;
+  --accent:#60a5fa;
+}
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
 
-    p {
-      color: #9ca3af;
-      line-height: 1.5;
-    }
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 40px;
+  border-bottom:1px solid #222;
+  position:sticky;
+  top:0;
+  background:rgba(11,11,12,0.8);
+  backdrop-filter: blur(10px);
+}
 
-    a {
-      color: #60a5fa;
-      text-decoration: none;
-    }
-  </style>
+nav h1{
+  letter-spacing:3px;
+  font-size:18px;
+}
+
+.lang button{
+  background:none;
+  border:none;
+  color:var(--muted);
+  margin-left:10px;
+  cursor:pointer;
+}
+
+.lang button:hover{
+  color:white;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:100px 20px;
+}
+
+.hero h2{
+  font-size:48px;
+  margin:20px 0;
+}
+
+.hero p{
+  color:var(--muted);
+  max-width:600px;
+  margin:auto;
+  line-height:1.5;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:10px 20px;
+  border-radius:10px;
+  text-decoration:none;
+  background:white;
+  color:black;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  padding:40px;
+}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:16px;
+  min-height:200px;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:40px;
+  color:var(--muted);
+  border-top:1px solid #222;
+}
+</style>
 </head>
-<body>
-  <div class="card">
-    <h1>STRIEMWN</h1>
-    <p>Transport spotter from Dresden.<br>
-    Developer of "Wildsdener Verkehrsbetriebe".</p>
 
-    <p>
-      <a href="https://t.me/">Telegram</a> |
-      <a href="https://discord.com/">Discord</a>
+<body>
+
+<nav>
+  <h1>STRIEMWN</h1>
+
+  <div class="lang">
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('de')">DE</button>
+    <button onclick="setLang('ru')">RU</button>
+    <button onclick="setLang('ua')">UA</button>
+    <button onclick="setLang('pl')">PL</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <h2 id="title">Urban Rails. Motion. Night.</h2>
+  <p id="desc">
+    Transport spotter from Dresden. Photographer. Developer of a transport simulation game.
+  </p>
+
+  <a class="btn" href="#gallery" id="btn">Explore Gallery</a>
+</div>
+
+<section class="grid" id="gallery">
+
+  <div class="card">📸 Tram Night Shot</div>
+  <div class="card">🌧️ Steel & Rain</div>
+  <div class="card">🚋 Route Archive</div>
+
+</section>
+
+<section class="grid">
+
+  <div class="card">
+    <h3>About</h3>
+    <p id="about">
+      Obsessed with urban transport systems and documenting Dresden trams.
     </p>
   </div>
+
+  <div class="card">
+    <h3>Game Dev</h3>
+    <p>
+      Working on <b>Wildsdener Verkehrsbetriebe</b> — a transport simulation game in Unity.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Contact</h3>
+    <p>
+      Telegram: <a href="#" style="color:var(--accent)">link</a><br>
+      Discord: <a href="#" style="color:var(--accent)">link</a>
+    </p>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 STRIEMWN
+</footer>
+
+<script>
+const translations = {
+  en:{
+    title:"Urban Rails. Motion. Night.",
+    desc:"Transport spotter from Dresden. Photographer. Developer of a transport simulation game.",
+    btn:"Explore Gallery",
+    about:"Obsessed with urban transport systems and documenting Dresden trams."
+  },
+  de:{
+    title:"Städtische Schienen. Bewegung. Nacht.",
+    desc:"Straßenbahn Spotter aus Dresden. Fotograf. Spieleentwickler.",
+    btn:"Galerie öffnen",
+    about:"Fasziniert von städtischem Verkehr und Dresdner Straßenbahnen."
+  },
+  ru:{
+    title:"Городские рельсы. Движение. Ночь.",
+    desc:"Трамвайный споттер из Дрездена. Фотограф и разработчик игр.",
+    btn:"Открыть галерею",
+    about:"Одержим городским транспортом и трамваями Дрездена."
+  },
+  ua:{
+    title:"Міські рейки. Рух. Ніч.",
+    desc:"Споттер трамваїв із Дрездена. Фотограф та розробник ігор.",
+    btn:"Відкрити галерею",
+    about:"Захоплений міським транспортом і трамваями Дрездена."
+  },
+  pl:{
+    title:"Miejskie szyny. Ruch. Noc.",
+    desc:"Spotter tramwajów z Drezna. Fotograf i twórca gier.",
+    btn:"Otwórz galerię",
+    about:"Zafascynowany transportem miejskim i tramwajami w Dreźnie."
+  }
+};
+
+function setLang(lang){
+  document.getElementById("title").innerText = translations[lang].title;
+  document.getElementById("desc").innerText = translations[lang].desc;
+  document.getElementById("btn").innerText = translations[lang].btn;
+  document.getElementById("about").innerText = translations[lang].about;
+  localStorage.setItem("lang", lang);
+}
+
+window.onload = () => {
+  setLang(localStorage.getItem("lang") || "en");
+};
+</script>
+
 </body>
 </html>
