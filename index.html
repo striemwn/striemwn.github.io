@@ -48,6 +48,16 @@ nav a{
 }
 nav a:hover{color:white}
 
+/* LANG */
+.lang button{
+  background:none;
+  border:none;
+  color:var(--muted);
+  margin-left:10px;
+  cursor:pointer;
+}
+.lang button:hover{color:white}
+
 /* HERO */
 .hero{
   text-align:center;
@@ -146,6 +156,7 @@ footer{
   color:var(--muted);
   border-top:1px solid #222;
 }
+
 a{color:var(--accent)}
 </style>
 </head>
@@ -154,19 +165,28 @@ a{color:var(--accent)}
 
 <nav>
   <h1>STRIEMWN</h1>
-  <div>
+
+  <div style="display:flex;align-items:center;gap:15px;">
     <a href="#about">About</a>
     <a href="#gallery">Gallery</a>
     <a href="#contact">Contact</a>
+
+    <div class="lang">
+      <button onclick="setLang('en')">EN</button>
+      <button onclick="setLang('de')">DE</button>
+      <button onclick="setLang('ru')">RU</button>
+      <button onclick="setLang('ua')">UA</button>
+      <button onclick="setLang('pl')">PL</button>
+    </div>
   </div>
 </nav>
 
 <section class="hero">
   <div class="small">TRAM SPOTTER • PHOTOGRAPHER • DEV</div>
 
-  <h2>Urban Rails.<br>Night Lights.<br>Motion.</h2>
+  <h2 id="title">Urban Rails.<br>Night Lights.<br>Motion.</h2>
 
-  <p>
+  <p id="desc">
     Personal website of Striemwn. Photos, routes, tram models, city atmosphere
     and documentation of urban transport in Dresden.
   </p>
@@ -181,16 +201,13 @@ a{color:var(--accent)}
 
   <div class="card">
     <h3>About</h3>
-    <p>Public Transport Spotter from Dresden (Germany).</p>
+    <p id="aboutText">Public Transport Spotter from Dresden (Germany).</p>
   </div>
 
   <div class="card">
     <h3>Game Dev</h3>
-    <p>
+    <p id="gameText">
       Working on <b>Wildsdener Verkehrsbetriebe</b> — a transport simulation game in Unity.
-    </p>
-    <p style="font-size:12px;color:#666;">
-      Wildsdener Verkehrsbetriebe
     </p>
   </div>
 
@@ -216,6 +233,57 @@ a{color:var(--accent)}
 <footer>
   © 2026 STRIEMWN
 </footer>
+
+<script>
+const t = {
+  en:{
+    title:"Urban Rails.<br>Night Lights.<br>Motion.",
+    desc:"Personal website of Striemwn. Photos, routes, tram models, city atmosphere and urban transport documentation.",
+    about:"Public Transport Spotter from Dresden (Germany).",
+    game:"Working on Wildsdener Verkehrsbetriebe — a transport simulation game in Unity."
+  },
+  de:{
+    title:"Städtische Schienen.<br>Nachtlichter.<br>Bewegung.",
+    desc:"Persönliche Website von Striemwn. Fotos und Straßenbahnen aus Dresden.",
+    about:"ÖPNV Spotter aus Dresden (Deutschland).",
+    game:"Arbeitet an Wildsdener Verkehrsbetriebe — einer Simulation in Unity."
+  },
+  ru:{
+    title:"Городские рельсы.<br>Ночные огни.<br>Движение.",
+    desc:"Личный сайт Striemwn. Фото и транспорт Дрездена.",
+    about:"Споттер общественного транспорта из Дрездена (Германия).",
+    game:"Разрабатывает Wildsdener Verkehrsbetriebe — транспортный симулятор на Unity."
+  },
+  ua:{
+    title:"Міські рейки.<br>Нічні вогні.<br>Рух.",
+    desc:"Особистий сайт Striemwn. Фото та транспорт Дрездена.",
+    about:"Споттер громадського транспорту з Дрездена (Німеччина).",
+    game:"Розробляє Wildsdener Verkehrsbetriebe — транспортний симулятор на Unity."
+  },
+  pl:{
+    title:"Miejskie szyny.<br>Światła nocy.<br>Ruch.",
+    desc:"Strona osobista Striemwn. Tramwaje i zdjęcia z Drezna.",
+    about:"Spotter transportu publicznego z Drezna (Niemcy).",
+    game:"Tworzy Wildsdener Verkehrsbetriebe — symulator transportu w Unity."
+  }
+};
+
+function setLang(l){
+  localStorage.setItem("lang",l);
+  apply();
+}
+
+function apply(){
+  const l = localStorage.getItem("lang") || "en";
+
+  document.getElementById("title").innerHTML = t[l].title;
+  document.getElementById("desc").innerText = t[l].desc;
+  document.getElementById("aboutText").innerText = t[l].about;
+  document.getElementById("gameText").innerText = t[l].game;
+}
+
+apply();
+</script>
 
 </body>
 </html>
