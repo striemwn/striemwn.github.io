@@ -1,220 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STRIEMWN</title>
+export default function StriemwnSite() { return ( <main className="min-h-screen bg-black text-white overflow-hidden"> {/* Background glow */} <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,120,255,0.25),transparent_40%)]" />
 
-<style>
-:root{
-  --bg:#0b0b0c;
-  --card:#141416;
-  --text:#f1f1f1;
-  --muted:#9ca3af;
-  --accent:#60a5fa;
-}
+{/* Navigation */}
+  <nav className="relative z-10 flex items-center justify-between px-8 py-6 border-b border-white/10 backdrop-blur-sm">
+    <h1 className="text-2xl font-bold tracking-widest">STRIEMWN</h1>
 
-body{
-  margin:0;
-  font-family: Arial, sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
+    <div className="flex gap-6 text-sm text-white/70">
+      <a href="#gallery" className="hover:text-white transition">Gallery</a>
+      <a href="#about" className="hover:text-white transition">About</a>
+      <a href="#contact" className="hover:text-white transition">Contact</a>
+    </div>
+  </nav>
 
-/* NAV */
-nav{
-  display:flex;
-  justify-content:space-between;
-  padding:20px 40px;
-  border-bottom:1px solid #222;
-  position:sticky;
-  top:0;
-  background:rgba(11,11,12,0.8);
-  backdrop-filter: blur(10px);
-}
+  {/* Hero section */}
+  <section className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-32">
+    <p className="uppercase tracking-[0.4em] text-blue-400 text-sm mb-4">
+      Tram Spotter • Photographer • Rail Enthusiast
+    </p>
 
-nav h1{
-  letter-spacing:3px;
-  font-size:18px;
-}
+    <h2 className="text-6xl md:text-8xl font-black leading-none max-w-5xl">
+      Urban Rails.
+      <br />
+      Night Lights.
+      <br />
+      Motion.
+    </h2>
 
-.lang button{
-  background:none;
-  border:none;
-  color:var(--muted);
-  margin-left:10px;
-  cursor:pointer;
-}
+    <p className="mt-8 text-white/70 max-w-2xl text-lg leading-relaxed">
+      Personal website of Striemwn. Photos, routes, tram models,
+      city atmosphere and random documentation of humanity moving
+      through steel boxes on rails. Civilization somehow survived
+      long enough for this to become an art form.
+    </p>
 
-.lang button:hover{
-  color:white;
-}
+    <div className="mt-10 flex gap-4">
+      <a
+        href="#gallery"
+        className="bg-white text-black px-6 py-3 rounded-2xl font-semibold hover:scale-105 transition"
+      >
+        Explore Gallery
+      </a>
 
-/* HERO */
-.hero{
-  text-align:center;
-  padding:100px 20px;
-}
+      <a
+        href="#about"
+        className="border border-white/20 px-6 py-3 rounded-2xl hover:bg-white/10 transition"
+      >
+        About Me
+      </a>
+    </div>
+  </section>
 
-.hero h2{
-  font-size:48px;
-  margin:20px 0;
-}
+  {/* Gallery */}
 
-.hero p{
-  color:var(--muted);
-  max-width:600px;
-  margin:auto;
-  line-height:1.5;
-}
-
-.btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:10px 20px;
-  border-radius:10px;
-  text-decoration:none;
-  background:white;
-  color:black;
-}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-  padding:40px;
-}
-
-.card{
-  background:var(--card);
-  padding:20px;
-  border-radius:16px;
-  min-height:200px;
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:translateY(-5px);
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:40px;
-  color:var(--muted);
-  border-top:1px solid #222;
-}
-</style>
-</head>
-
-<body>
-
-<nav>
-  <h1>STRIEMWN</h1>
-
-  <div class="lang">
-    <button onclick="setLang('en')">EN</button>
-    <button onclick="setLang('de')">DE</button>
-    <button onclick="setLang('ru')">RU</button>
-    <button onclick="setLang('ua')">UA</button>
-    <button onclick="setLang('pl')">PL</button>
-  </div>
-</nav>
-
-<div class="hero">
-  <h2 id="title">Urban Rails. Motion. Night.</h2>
-  <p id="desc">
-    Transport spotter from Dresden. Photographer. Developer of a transport simulation game.
-  </p>
-
-  <a class="btn" href="#gallery" id="btn">Explore Gallery</a>
-</div>
-
-<section class="grid" id="gallery">
-
-  <div class="card">📸 Tram Night Shot</div>
-  <div class="card">🌧️ Steel & Rain</div>
-  <div class="card">🚋 Route Archive</div>
-
-</section>
-
-<section class="grid">
-
-  <div class="card">
-    <h3>About</h3>
-    <p id="about">
-      Obsessed with urban transport systems and documenting Dresden trams.
+  <section id="gallery" className="relative z-10 px-8 py-20">
+    <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6"><div className="bg-white/5 border border-white/10 rounded-3xl p-6 hover:-translate-y-1 transition">
+    <h3 className="text-xl font-bold mb-2">About</h3>
+    <p className="text-white/70">
+      Public Transport Spotter from Dresden (Germany).
     </p>
   </div>
 
-  <div class="card">
-    <h3>Game Dev</h3>
-    <p>
+  <div className="bg-white/5 border border-white/10 rounded-3xl p-6 hover:-translate-y-1 transition">
+    <h3 className="text-xl font-bold mb-2">Game Dev</h3>
+    <p className="text-white/70">
       Working on <b>Wildsdener Verkehrsbetriebe</b> — a transport simulation game in Unity.
     </p>
   </div>
 
-  <div class="card">
-    <h3>Contact</h3>
-    <p>
-      Telegram: <a href="#" style="color:var(--accent)">link</a><br>
-      Discord: <a href="#" style="color:var(--accent)">link</a>
+  <div className="bg-white/5 border border-white/10 rounded-3xl p-6 hover:-translate-y-1 transition">
+    <h3 className="text-xl font-bold mb-2">Contact</h3>
+    <p className="text-white/70">
+      Telegram: <a className="text-blue-400" href="https://t.me/striemwngl">@striemwngl</a><br/>
+      Discord: soon
     </p>
   </div>
 
-</section>
+</div>
 
-<footer>
-  © 2026 STRIEMWN
-</footer>
+  </section>{/* About */} <section id="about" className="relative z-10 px-8 py-24 border-t border-white/10"> <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center"> <div> <p className="text-blue-400 uppercase tracking-[0.3em] text-sm mb-2"> About </p>
 
-<script>
-const translations = {
-  en:{
-    title:"Urban Rails. Motion. Night.",
-    desc:"Transport spotter from Dresden. Photographer. Developer of a transport simulation game.",
-    btn:"Explore Gallery",
-    about:"Obsessed with urban transport systems and documenting Dresden trams."
-  },
-  de:{
-    title:"Städtische Schienen. Bewegung. Nacht.",
-    desc:"Straßenbahn Spotter aus Dresden. Fotograf. Spieleentwickler.",
-    btn:"Galerie öffnen",
-    about:"Fasziniert von städtischem Verkehr und Dresdner Straßenbahnen."
-  },
-  ru:{
-    title:"Городские рельсы. Движение. Ночь.",
-    desc:"Трамвайный споттер из Дрездена. Фотограф и разработчик игр.",
-    btn:"Открыть галерею",
-    about:"Одержим городским транспортом и трамваями Дрездена."
-  },
-  ua:{
-    title:"Міські рейки. Рух. Ніч.",
-    desc:"Споттер трамваїв із Дрездена. Фотограф та розробник ігор.",
-    btn:"Відкрити галерею",
-    about:"Захоплений міським транспортом і трамваями Дрездена."
-  },
-  pl:{
-    title:"Miejskie szyny. Ruch. Noc.",
-    desc:"Spotter tramwajów z Drezna. Fotograf i twórca gier.",
-    btn:"Otwórz galerię",
-    about:"Zafascynowany transportem miejskim i tramwajami w Dreźnie."
-  }
-};
+<h3 className="text-5xl font-black mb-6">
+          Just a person obsessed with transit systems.
+        </h3>
+      </div>
 
-function setLang(lang){
-  document.getElementById("title").innerText = translations[lang].title;
-  document.getElementById("desc").innerText = translations[lang].desc;
-  document.getElementById("btn").innerText = translations[lang].btn;
-  document.getElementById("about").innerText = translations[lang].about;
-  localStorage.setItem("lang", lang);
-}
+      <div>
+        <p className="text-white/70 leading-relaxed text-lg">
+          This website is a collection of photographs, observations,
+          route histories and city moments centered around trams and
+          urban transport. Somewhere between engineering, atmosphere
+          and sleep deprivation.
+        </p>
+      </div>
+    </div>
+  </section>
 
-window.onload = () => {
-  setLang(localStorage.getItem("lang") || "en");
-};
-</script>
+  {/* Footer */}
+  <footer
+    id="contact"
+    className="relative z-10 border-t border-white/10 px-8 py-10 text-center text-white/40"
+  >
+    <p>© 2026 STRIEMWN.COM</p>
+  </footer>
+</main>
 
-</body>
-</html>
+); }
